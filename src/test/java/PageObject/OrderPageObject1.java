@@ -1,8 +1,6 @@
 package PageObject;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class OrderPageObject1 {
     private WebDriver driver;

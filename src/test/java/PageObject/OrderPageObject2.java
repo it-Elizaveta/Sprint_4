@@ -68,9 +68,9 @@ public class OrderPageObject2 {
     }
 
     public void chooseColor(String newColor) {
-        if (newColor=="black") {
+        if (newColor.equals("black")) {
             clickBlackColor();
-        } else if (newColor=="grey") {
+        } else if (newColor.equals("grey")) {
             clickGreyColor();
         }
     }
@@ -79,7 +79,7 @@ public class OrderPageObject2 {
         driver.findElement(comment).sendKeys(newComment);
     }
 
-    public void ckickOrderButton(){
+    public void clickOrderButton(){
         driver.findElement(orderButton).click();
     }
 
@@ -88,7 +88,7 @@ public class OrderPageObject2 {
         inputPeriod(days);
         chooseColor(newColor);
         inputComment(newComment);
-        ckickOrderButton();
+        clickOrderButton();
     }
 
 }

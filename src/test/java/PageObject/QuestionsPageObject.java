@@ -1,5 +1,4 @@
 package PageObject;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -43,8 +42,11 @@ public class QuestionsPageObject {
     //Массив локаторов кнопок
     private By[] buttonLocatorsArray= {button_0,button_1,button_2,button_3,button_4,button_5,button_6,button_7};
 
-    //Массив локаторов контента (содержимого в выпадающих списках)
+    //Массив локаторов контента (локаторов содержимого в выпадающих списках)
     private By[] contentLocatorsArray= {content_0,content_1,content_2,content_3,content_4,content_5,content_6,content_7};
+
+    //Массив ожидаемого контента (текста содержимого в выпадающих списках)
+    private String[] expectedContentTextArray={"Сутки — 400 рублей. Оплата курьеру — наличными или картой.","Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.", "Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.","Только начиная с завтрашнего дня. Но скоро станем расторопнее.", "Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.", "Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.", "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.", "Да, обязательно. Всем самокатов! И Москве, и Московской области."};
 
     public QuestionsPageObject(WebDriver driver) {
         this.driver=driver;
@@ -59,9 +61,15 @@ public class QuestionsPageObject {
         driver.findElement(locator).click();
     }
 
-    public boolean contentIsDisplayed (int buttonIndex){
+    public String getContentText (int buttonIndex){
         By locator=contentLocatorsArray[buttonIndex];
-        return driver.findElement(locator).isDisplayed();
+        return driver.findElement(locator).getText();
+    }
+
+    public boolean contentIsDisplayed (int buttonIndex) {
+        By locator = contentLocatorsArray[buttonIndex];
+        String expectedContentText = expectedContentTextArray[buttonIndex];
+        return driver.findElement(locator).isDisplayed() && getContentText(buttonIndex).equals(expectedContentText);
     }
  }
 

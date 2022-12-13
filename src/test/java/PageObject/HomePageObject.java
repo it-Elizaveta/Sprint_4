@@ -32,9 +32,9 @@ public class HomePageObject {
     }
 
     public void chooseOrderButtonAndClick(String buttonLocation){
-        if(buttonLocation=="upper") {
+        if (buttonLocation.equals("upper")) {
             upperOrderButtonClick();
-        } else if (buttonLocation=="lower") {
+        } else if (buttonLocation.equals("lower")) {
             lowerOrderButtonClick();
         }
     }

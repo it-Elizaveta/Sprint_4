@@ -6,7 +6,6 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
@@ -45,9 +44,9 @@ public class ImportantQuestions {
     @Test
     public void contentIsVisibleWhenClickedButton(){
         //выбрать браузер: Chrome или Firefox
-        if (driverType=="Chrome") {
+        if (driverType.equals("Chrome")) {
             driver = new ChromeDriver();
-        } else if (driverType=="Firefox") {
+        } else if (driverType.equals("Firefox")) {
             driver = new FirefoxDriver();
         }
 
